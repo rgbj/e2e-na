@@ -21,6 +21,15 @@ exports.config = {
   specs: [paths.e2e + '/**/*.js'],
 
   // Options to be passed to Jasmine-node.
+  framework: 'jasmine2',
+  onPrepare: function() {
+    var jasmineReporters = require('jasmine-reporters');
+    jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+      consolidateAll: true,
+        savePath: 'target',
+      filePrefix: 'xunit-e2e'
+    }));
+  },
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000
