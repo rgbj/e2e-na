@@ -19,3 +19,12 @@ describe('The main view', function () {
   });
 
 });
+
+describe('Some non-angular test', function () {
+
+  it('title', function() {
+    browser.ignoreSynchronization = true;
+    browser.get('http://internic.net');
+    expect(browser.getTitle()).toEqual("InterNIC | The Internet's Network Information Center");
+  });
+});
